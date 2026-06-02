@@ -1,0 +1,7 @@
+mysql_connector_repackaged==0.3.1
+numpy==2.4.6
+pandas==3.0.3
+Pillow==12.2.0
+python_docx==1.2.0
+Requests==2.34.2
+scipy==1.17.1
