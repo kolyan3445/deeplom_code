@@ -1,5 +1,5 @@
 {
-"esp32_ip":"192.168.0.110",
+"esp32_ip":"192.168.0.105",
 "mysql_host":"localhost",
 "mysql_port":3306,
 "mysql_user":"root",

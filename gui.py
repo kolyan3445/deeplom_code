@@ -22,7 +22,7 @@ class ThermalMonitorApp:
 
         self.root=tk.Tk()
         self.root.title(f"Мониторинг - Сессия №{session_id}")
-        self.root.geometry("1200x800")
+        self.root.geometry("1200x1000")
     
         self.db=DatabaseManager(settings)
 
@@ -154,7 +154,7 @@ class ThermalMonitorApp:
 
         CSVExporter.export(self.db.get_session_points(self.session_id), filename)
 
-        messagebox("showinfo", f"csv файл сохранён в exports под названием session_{self.session_id}_{stamp}.docx")
+        messagebox.showinfo(title="Успешно", message=f"csv файл сохранён в exports под названием session_{self.session_id}_{stamp}.csv")
 
     def export_docx(self):
         os.makedirs("reports", exist_ok=True)
@@ -165,7 +165,7 @@ class ThermalMonitorApp:
             self.db.get_session_points(self.session_id),
             self.db.get_last_image(self.session_id))
         
-        messagebox("showinfo", f"Отчёт создан и сохранён в reports под названием session_{self.session_id}_{stamp}.docx")
+        messagebox.showinfo(title="Успешно", message=f"Отчёт создан и сохранён в reports под названием session_{self.session_id}_{stamp}.docx")
             
 
     def back_to_sessions(self):
