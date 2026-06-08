@@ -27,12 +27,9 @@ class MonitoringThread(threading.Thread):
         camera = ESP32Client(self.ip)
 
         while self.running:
-
             try:
-
                 frame = camera.get_frame()
                 ts = datetime.now()
-
                 points = []
 
                 for _ in range(300):
@@ -63,13 +60,11 @@ class MonitoringThread(threading.Thread):
                 print("Передача изображения в GUI")
 
                 self.cb(result_image,{"tmin": tmin, "tmax": tmax, "tavg": tavg, "points": len(points)}, ts)
-                print("HeatMap:", result_image, tmin, tmax, tavg)
+                #print("HeatMap:", result_image, tmin, tmax, tavg)
 
             except Exception:
 
-                logger.error(
-                    traceback.format_exc()
-                )
+                logger.error(traceback.format_exc())
 
             if self.stop_event.wait(5):
                 break

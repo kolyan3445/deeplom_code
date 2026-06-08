@@ -1,20 +1,28 @@
 import mysql.connector
+from tkinter import messagebox
 
 class DatabaseManager:
 
     def __init__(self, c):
+        
+        try:
+            self.connection = mysql.connector.connect(
+                host=c["mysql_host"],
+                port=c["mysql_port"],
+                user=c["mysql_user"],
+                password=c["mysql_password"],
+                database=c["mysql_database"]
+            )
 
-        self.connection = mysql.connector.connect(
-            host=c["mysql_host"],
-            port=c["mysql_port"],
-            user=c["mysql_user"],
-            password=c["mysql_password"],
-            database=c["mysql_database"]
-        )
+            self.cursor = self.connection.cursor(
+                dictionary=True
+            )
 
-        self.cursor = self.connection.cursor(
-            dictionary=True
-        )
+        except Exception as e:
+            from logger import logger
+            messagebox.showerror(title="Ошибка БД!", message="Ошибка подключения к базе данных! Проверьте запущен ли у вас MySQL или файл настроек settings.json!")
+
+            logger.error(e)
 
     def create_session(self):
 

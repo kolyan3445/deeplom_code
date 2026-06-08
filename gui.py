@@ -57,8 +57,8 @@ class ThermalMonitorApp:
             self.stop_btn = ttk.Button(self.root, text="Стоп", command=self.stop_monitoring)
             self.stop_btn.pack()
 
-        ttk.Button(self.root,text="CSV",command=self.export_csv).pack()
-        ttk.Button(self.root,text="DOCX",command=self.export_docx).pack()
+        ttk.Button(self.root,text="Экспорт в CSV",command=self.export_csv).pack()
+        ttk.Button(self.root,text="Создать отчёт DOCX",command=self.export_docx).pack()
         ttk.Button(self.root,text="Назад",command=self.back_to_sessions).pack()
 
         if not self.is_new_session:
